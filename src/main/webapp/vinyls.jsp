@@ -1,17 +1,34 @@
-<%-- 
-    Document   : add_collection
-    Created on : May 14, 2019, 11:49:49 AM
-    Author     : NKA
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html>
 <html>
+    <!--header -------------->
+    <jsp:include page='./includes/header.jsp'>
+        <jsp:param name="title" value="Vinyl Shelf | Vinyls"/>
+    </jsp:include>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
-    </body>
+
+        <!--header menu -------------->
+        <jsp:include page="./includes/header_menu.jsp" />
+        <!--collections_sub_header_menu -------------->
+        <jsp:include page='./includes/vinyl_sub_header_menu.jsp'>
+            <jsp:param name="bread_crumbs" value="collections &nbsp;&nbsp;<span style='color : orangered'>»</span>&nbsp;&nbsp; collection name  &nbsp;&nbsp;<span style='color : orangered'>»</span>&nbsp;&nbsp; vinyls"/>
+        </jsp:include>
+
+
+    <body class="page bg-image">
+        <div class="padding-30">
+
+        </div>
+    </div>
+
+
+
+
+    <!--footer -------------->
+    <div style="position: fixed; bottom: 0; right: 0"><jsp:include page="./includes/footer.jsp" /></div>
+</body>
 </html>
