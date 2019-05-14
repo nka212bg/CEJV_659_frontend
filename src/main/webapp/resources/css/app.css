@@ -264,7 +264,7 @@ a:hover{
 
 .input:focus{
     border-left: 3px solid #3399FF ;
-   background: #dddddd;
+    background: #dddddd;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -507,6 +507,9 @@ fieldset {
     display: none;
 }
 
+.shown {
+    display: block;
+}
 
 .border-right-blue{
     border-right: 3px solid #3399FF;
@@ -529,8 +532,6 @@ fieldset {
     outline: none;
 }
 
-
-
 .systemMessage{
     padding:20px 60px;
     position: fixed; 
@@ -540,4 +541,15 @@ fieldset {
     font-size: 12px; 
     background: #262b2f;
     font-family: 'Open Sans', sans-serif;
+}
+
+.collection{
+    width: 100%; 
+    max-width: 70%; 
+    height: 150px; 
+    border-radius: 5px;
+    background: white;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;         /* Opera/IE 8+ */
 }

@@ -9,7 +9,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
-    <body>
+    <body class="page bg-image">
 
         <!--header menu -------------->
         <jsp:include page="./includes/header_menu.jsp" />
@@ -18,10 +18,23 @@
             <jsp:param name="bread_crumbs" value="collections"/>
         </jsp:include>
 
-    <body class="page bg-image">
-        <div class="padding-30">
 
+        <div class="mid-div hidden" id="empty_page" >
+            <a href="${pageContext.request.contextPath}/add_collection.jsp" class="a"> 
+                <i class="icon center-div" style="font-size: 10em"></i>
+                <p>You have no collections yet</p>
+            </a>
         </div>
+
+
+
+        <div id="collections" style="width: 100%; padding-top: 40px">
+            <div class="center-div box-shadow collection">
+
+            </div>  
+        </div>    
+
+
 
 
 

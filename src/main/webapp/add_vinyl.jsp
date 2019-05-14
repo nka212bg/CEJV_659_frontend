@@ -9,7 +9,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
-    <body>
+      <body class="page bg-image">
 
         <!--header menu -------------->
         <jsp:include page="./includes/header_menu.jsp" />
@@ -19,7 +19,7 @@
         </jsp:include>
 
 
-    <body class="page bg-image">
+ 
         <div class="padding-30">
             <div class="padding-30" style="width: 350px;">
                 <h1 class="text-blue capitalize" style="line-height: 0;">add new vinyl</h1>

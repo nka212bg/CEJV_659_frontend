@@ -9,7 +9,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
-    <body>
+    <body class="page bg-image">
 
         <!--header menu -------------->
         <jsp:include page="./includes/header_menu.jsp" />
@@ -19,20 +19,20 @@
         </jsp:include>
 
 
-    <body class="page bg-image">
+
         <div class="padding-30">
             <div class="padding-30" style="width: 350px;">
                 <h1 class="text-blue capitalize" style="line-height: 0;">add new collection</h1>
                 <br/>
                 <form id="login" method="POST" action="Login?login">
-                     <input type="text" class="input box-shadow" name="collection_email" placeholder=" Collection Name" />
+                    <input type="text" class="input box-shadow" name="collection_email" placeholder=" Collection Name" />
                     <br>
                     <input type="text" class="input box-shadow" name="genre" placeholder=" Genre" />
                     <br>
                     <input type="text" class="input box-shadow" name="collection_cover" placeholder="  Cover (URL)" />
                     <br>
                     <textarea class="input box-shadow" style="min-height: 100px" placeholder=" Note..."></textarea>
-              
+
                     <div class="space-between">
                         <a></a>
                         <button class="button margin-v-20 box-shadow" name="add_collection" style="width: 150px">Add</button>
