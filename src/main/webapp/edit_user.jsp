@@ -21,15 +21,15 @@
                 <span class="text-blue capitalize">enter your new credentials</span>
                 <br/> <br/>
                 <form id="login" method="POST" action="Login?login">
-                    <input type="text" class="input" name="email" placeholder=" Email" />
+                    <input type="text" class="input box-shadow" name="email" placeholder=" Email" />
                     <br>
-                    <input type="text" class="input" name="name" placeholder=" User Full Name" />
+                    <input type="text" class="input box-shadow" name="name" placeholder=" User Full Name" />
                     <br>
-                    <input type="text" class="input" name="avatar" placeholder=" Avatar (URL)" />
+                    <input type="text" class="input box-shadow" name="avatar" placeholder=" Avatar (URL)" />
                     <br>
-                    <input type="password"  class="input" name="password" placeholder=" Password (Only if is needed.)"/>
+                    <input type="password"  class="input box-shadow" name="password" placeholder=" Password (Only if is needed.)"/>
                     <br>
-                    <input type="password" class="input" name="confirm_password" placeholder=" Confirm Password" />
+                    <input type="password" class="input box-shadow" name="confirm_password" placeholder=" Confirm Password" />
 
                     <div class="space-between">
                         <a></a>

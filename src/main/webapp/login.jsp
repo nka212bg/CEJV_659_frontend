@@ -24,10 +24,10 @@
                 <span class="text-blue capitalize">enter your login credentials</span>
                 <br/> <br/>
                 <form id="login" method="POST" action="Login?login">
-                    <input type="text" class="input" name="email" placeholder=" Email" />
+                    <input type="text" class="input box-shadow" name="email" placeholder=" Email" />
                     <br>
 
-                    <input type="password"  class="input" name="password" placeholder=" Password"/>
+                    <input type="password"  class="input box-shadow" name="password" placeholder=" Password"/>
 
                     <div class="space-between">
                         <a href="register.jsp" class="a text-light-blue">Register</a>

@@ -13,31 +13,14 @@
 
         <!--header menu -------------->
         <jsp:include page="./includes/header_menu.jsp" />
+        <!--collections_sub_header_menu -------------->
+        <jsp:include page='./includes/collections_sub_header_menu.jsp'>
+            <jsp:param name="bread_crumbs" value="collections"/>
+        </jsp:include>
 
     <body class="page bg-image">
         <div class="padding-30">
-            <div class="padding-30" style="width: 350px;">
-                <h1 class="text-blue capitalize" style="line-height: 0">edit profile</h1>
-                <span class="text-blue capitalize">enter your new credentials</span>
-                <br/> <br/>
-                <form id="login" method="POST" action="Login?login">
-                    <input type="text" class="input" name="email" placeholder=" Email" />
-                    <br>
-                    <input type="text" class="input" name="name" placeholder=" User Full Name" />
-                    <br>
-                    <input type="text" class="input" name="avatar" placeholder=" Avatar (URL)" />
-                    <br>
-                    <input type="password"  class="input" name="password" placeholder=" Password (Only if is needed.)"/>
-                    <br>
-                    <input type="password" class="input" name="confirm_password" placeholder=" Confirm Password" />
 
-                    <div class="space-between">
-                        <a></a>
-                        <button class="button margin-v-20 box-shadow" name="edit" value="edit" style="width: 150px">Edit</button>
-                    </div>
-
-                </form>
-            </div>
         </div>
 
 
