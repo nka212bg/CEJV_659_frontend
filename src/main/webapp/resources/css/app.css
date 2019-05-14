@@ -17,6 +17,25 @@ body{
     margin: 0px;
 }
 
+.bg-image{
+    background: url("../img/bg.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.title_text{
+    color: white;
+    font-size: 4em;
+    line-height: 0.1em;
+}
+
+.subtitle_text{
+    color: white;
+    font-size: 1.5em;
+    font-weight: 300;
+}
 
 .icon {
     font-family: symbol;
@@ -25,6 +44,16 @@ body{
     vertical-align: middle;
 }
 
+.user-logo{
+    border-radius: 2px;
+    width: 55px;
+    height: 55px;
+    object-fit: cover;
+}
+
+.user-logo:hover{
+    opacity: 0.5;
+}
 
 .horizontal-align{
     display: inline-flex;
@@ -32,13 +61,21 @@ body{
 
 a{
     text-decoration: none;
-      color: rgba(0, 0, 0, 0.5);
+    color: rgba(0, 0, 0, 0.5);
 }
 
 a:hover{
     color: #000000;
 }
 
+.a{
+    color: #54b8ff;
+    cursor: pointer;
+}
+
+.a:hover{
+    color: orangered;
+}
 
 .margin-h-20{
     margin: 0 20px;
@@ -208,24 +245,41 @@ a:hover{
 
 .input ,select{
     outline: none;
-    width: 100%;
-    border: 1px solid rgba(0, 0, 0, 0.08);;
     border-radius: 3px;
-    background: rgba(255, 255, 255, 0.08);
-    padding: 10px; 
-    margin-top: 7px;
+    border: none;
+    background: white;
+    width: 100%;
+    padding: 15px; 
+    margin-top: 10px;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
 }
+
+
 
 .input:disabled{
     background: #f2f2f2;
 }
 
 .input:focus{
-    border-left: 3px solid #3399FF ;
-    
+    border-left: 7px solid #3399FF ;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    font-family: symbol;
+    color: #bbbbbb;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    font-family: symbol;
+    color: #bbbbbb;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    font-family: symbol;
+    color: #bbbbbb;
 }
 
 .button{
@@ -301,11 +355,16 @@ fieldset {
     width: 100%;
 }
 
+.square{
+    width: 55px;
+    height: 55px;
+}
+
 
 /*colors -----------------------------------------*/
 
 .text-blue{
-    color: #3399FF;
+    color: #54b8ff;
 }
 
 .text-light-blue{
@@ -316,16 +375,28 @@ fieldset {
     color: #FF6600;
 }
 
+.text-white{
+    color: white;
+}
+
 .bg-light-blue{
-    background: #94C9FF;
+    background: #b8dbff;
 }
 
 .bg-orange{
     background: #FF6600;
 }
 
+.bg-blue{
+    background: dodgerblue;
+}
+
 .bg-lightgray{
     background: lightgray;
+}
+
+.bg-white{
+    background:  white;
 }
 
 .bg-very-lightgray{
@@ -375,6 +446,7 @@ fieldset {
 .vertica-align-flex{
     display: flex; 
     align-items: center;
+    height: 100%;
 }
 
 .display-flex{
@@ -440,14 +512,6 @@ fieldset {
 
 .border-right-light-blue{
     border-right: 3px solid #94C9FF;
-}
-
-/*  chat ------------------------------------------------*/
-
-.chat{
-    padding-bottom: 5px;
-    width: 100%;
-    font-size: 90%;
 }
 
 .send-box{

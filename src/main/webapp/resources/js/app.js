@@ -1,6 +1,9 @@
-'use strict'
+"use strict"
 document.addEventListener('DOMContentLoaded', function () {
-
+    $("#lazy_loader").fadeOut(1000, function () {
+        $(this).hide();
+    });
+    
 });
 
 
