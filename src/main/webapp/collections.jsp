@@ -27,6 +27,21 @@
         </div>
 
 
+        <div class="text-white padding-10">
+            <br>
+            <span class="text-white">Temporary navigation</span> &nbsp;&nbsp;»&nbsp;&nbsp;
+            <a href="${pageContext.request.contextPath}/login.jsp" class="a capitalize">login</a>&nbsp;&nbsp;
+            <a href="${pageContext.request.contextPath}/register.jsp" class="a capitalize">register</a>&nbsp;&nbsp;
+            <a href="${pageContext.request.contextPath}/add_vinyl.jsp" class="a capitalize">add vinyl</a>&nbsp;&nbsp;
+            <a href="${pageContext.request.contextPath}/add_collection.jsp" class="a capitalize">add collection</a>&nbsp;&nbsp;
+            <a href="${pageContext.request.contextPath}/collections.jsp" class="a capitalize">collections</a>&nbsp;&nbsp;
+            <a href="${pageContext.request.contextPath}/edit_collection.jsp" class="a capitalize">edit collection</a>&nbsp;&nbsp;
+            <a href="${pageContext.request.contextPath}/edit_user.jsp" class="a capitalize">edit user</a>&nbsp;&nbsp;
+            <a href="${pageContext.request.contextPath}/edit_vinyl.jsp" class="a capitalize">edit vinyl</a>&nbsp;&nbsp;
+            <a href="${pageContext.request.contextPath}/vinyls.jsp" class="a capitalize">vinyls</a>&nbsp;&nbsp;
+
+        </div>
+
 
         <div id="collections" style="width: 100%; padding-top: 40px">
 
@@ -50,7 +65,7 @@
                 <div class="padding-30 content_item">
                     <div class="space-between">
                         <h2 class="first_upper">My first vinyl collection</h2>
-                      <div style="margin-top: -51px; margin-right: -15px; background: lightgray; padding: 12px 0px 4px 0px; border-radius: 5px;">
+                        <div style="margin-top: -51px; margin-right: -15px; background: lightgray; padding: 12px 0px 4px 0px; border-radius: 5px;">
                             <a href="#"><i class="icon a padding-10"></i></a>
                         </div>
                     </div>
@@ -65,7 +80,7 @@
                 <div class="padding-30 content_item">
                     <div class="space-between">
                         <h2 class="first_upper">My first vinyl collection</h2>
-                       <div style="margin-top: -51px; margin-right: -15px; background: lightgray; padding: 12px 0px 4px 0px; border-radius: 5px;">
+                        <div style="margin-top: -51px; margin-right: -15px; background: lightgray; padding: 12px 0px 4px 0px; border-radius: 5px;">
                             <i class="icon a padding-10"></i>
                         </div>
                     </div>

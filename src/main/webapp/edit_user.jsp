@@ -54,7 +54,7 @@
 
 
         <!--footer -------------->
-        <div style="position: fixed; bottom: 0; right: 0"><jsp:include page="./includes/footer.jsp" /></div>
+       <jsp:include page="./includes/footer.jsp" />
         <script>
            
             document.forms["edit_user"].avatar.onblur = () => {

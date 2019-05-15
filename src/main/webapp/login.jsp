@@ -39,6 +39,11 @@
 
 
 
+        <div style="position: absolute; top: 0; right: 0; margin: 20px">
+            <i class="icon a" title="contact us"></i>
+            <i class="icon a margin-h-20" title="feedback"></i>
+            <i class="icon a" title="FAQ"></i>
+        </div>
 
         <!--footer -------------->
         <div style="position: fixed; bottom: 0; right: 0"><jsp:include page="./includes/footer.jsp" /></div>
