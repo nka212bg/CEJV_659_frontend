@@ -29,7 +29,7 @@
                     <br>
                     <input type="text" class="input box-shadow" name="genre" placeholder=" Album" />
                     <br>
-                    <input type="text" class="input box-shadow" name="vinyl_cover" placeholder="  Cover (URL)" />
+                    <input type="text" class="input box-shadow" name="vinyl_cover" placeholder="  Cover (URL / any image format)" />
                     <br>
                     <input type="text" class="input box-shadow" name="album_year" placeholder="  Album Year" />
                     <br>

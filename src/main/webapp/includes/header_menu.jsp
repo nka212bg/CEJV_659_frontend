@@ -9,8 +9,10 @@
     <c:when test="${not empty sessionScope.user_id}">
         <div class="space-between vertica-align-flex padding-5" style="background: rgba(0,76,144,0.5)">
             <div class="space-between vertica-align-flex" style="">
-                <a href="${pageContext.request.contextPath}/edit_user.jsp" style="cursor: pointer;"><img id="menu_logo_image" src="${pageContext.request.contextPath}/users/${sessionScope.user_id}/logo.jpg" class="user-logo"  
-                                                                                                         onerror="this.src='${pageContext.request.contextPath}/resources/img/logo.jpg'" /></a> 
+
+                <a href="${pageContext.request.contextPath}/edit_user.jsp" style="cursor: pointer;"><img class="user-logo box-shadow" src="${pageContext.request.contextPath}/users/${sessionScope.user_id}/logo.jpg" onerror="this.src='${pageContext.request.contextPath}/resources/img/logo.jpg'" />
+                </a> 
+
                 <a href="${pageContext.request.contextPath}/collections.jsp" class="margin-left home_menu a homeLink" >
                     <i class="icon"></i> <span class="capitalize bold" >collections</span>
                 </a>

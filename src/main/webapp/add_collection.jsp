@@ -29,7 +29,7 @@
                     <br>
                     <input type="text" class="input box-shadow" name="genre" placeholder=" Genre" />
                     <br>
-                    <input type="text" class="input box-shadow" name="collection_cover" placeholder="  Cover (URL)" />
+                    <input type="text" class="input box-shadow" name="collection_cover" placeholder="  Cover (URL / any image format)" />
                     <br>
                     <textarea class="input box-shadow" style="min-height: 100px" placeholder=" Note..."></textarea>
 

@@ -9,7 +9,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
-  
+
     <body class="page bg-image">
         <div class="padding-30">
             <div class="padding-30" style="width: 350px;">
@@ -26,6 +26,8 @@
                     <input type="text" class="input box-shadow" name="email" placeholder=" Email" />
                     <br>
                     <input type="text" class="input box-shadow" name="name" placeholder=" User Full Name" />
+                    <br>
+                    <input type="text" class="input box-shadow" name="avatar" placeholder=" Avatar (URL / any image format)" />
                     <br>
                     <input type="password"  class="input box-shadow" name="password" placeholder=" Password"/>
                     <br>
