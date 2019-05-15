@@ -14,7 +14,7 @@ html{
 }
 
 body{
-    margin: 0px;
+    /*margin: 0px;*/
 }
 
 .bg-image{
@@ -544,12 +544,35 @@ fieldset {
 }
 
 .collection{
+    position: relative;
     width: 100%; 
     max-width: 70%; 
-    height: 150px; 
+    min-width: 500px;
+    min-height: 150px; 
     border-radius: 5px;
     background: white;
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.cover_item{
+    position: absolute;
+    width: 250px !important;
+    height: 100%;
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+    object-fit: cover;
+}
+
+.content_item{
+    width: 100%; 
+    margin-left: 250px;
+}
+
+.bubble{
+    display: inline-block;
+    padding: 7px 20px;
+    border: 1px solid dodgerblue;
+    border-radius: 100px;
 }
