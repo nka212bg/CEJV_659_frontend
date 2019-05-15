@@ -545,6 +545,7 @@ fieldset {
 
 .collection{
     position: relative;
+    margin-bottom: 30px !important;
     width: 100%; 
     max-width: 70%; 
     min-width: 500px;
@@ -554,6 +555,18 @@ fieldset {
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.cover_collection{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    padding: 4px;
+    border-radius: 8px;
+    object-fit: cover;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    box-sizing: border-box;
 }
 
 .cover_item{

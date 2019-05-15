@@ -35,7 +35,7 @@
                 <div class="padding-30 content_item">
                     <div class="space-between">
                         <h2 class="first_upper">My first vinyl collection</h2>
-                        <div style="margin-top: -60px; margin-right: -26px;">
+                        <div style="margin-top: -51px; margin-right: -15px; background: lightgray; padding: 12px 0px 4px 0px; border-radius: 5px;">
                             <a href="#"><i class="icon a padding-10"></i></a>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                 <div class="padding-30 content_item">
                     <div class="space-between">
                         <h2 class="first_upper">My first vinyl collection</h2>
-                        <div style="margin-top: -60px; margin-right: -26px;">
+                      <div style="margin-top: -51px; margin-right: -15px; background: lightgray; padding: 12px 0px 4px 0px; border-radius: 5px;">
                             <a href="#"><i class="icon a padding-10"></i></a>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                 <div class="padding-30 content_item">
                     <div class="space-between">
                         <h2 class="first_upper">My first vinyl collection</h2>
-                        <div style="margin-top: -60px; margin-right: -26px;">
+                       <div style="margin-top: -51px; margin-right: -15px; background: lightgray; padding: 12px 0px 4px 0px; border-radius: 5px;">
                             <i class="icon a padding-10"></i>
                         </div>
                     </div>
