@@ -22,15 +22,15 @@
                 <h1 class="text-blue capitalize" style="line-height: 0">login</h1>
                 <span class="text-blue capitalize">enter your login credentials</span>
                 <br/> <br/>
-                <form id="login" method="POST" action="Login?login">
-                    <input type="text" class="input box-shadow" name="email" placeholder=" Email" />
+                <form id="login" method="POST" action="http://localhost:8080/CEJV__659_backend/api/user/login">
+                    <input type="text" class="input box-shadow" name="user_email" placeholder=" Email" />
                     <br>
 
-                    <input type="password"  class="input box-shadow" name="password" placeholder=" Password"/>
+                    <input type="password"  class="input box-shadow" name="user_password" placeholder=" Password"/>
 
                     <div class="space-between">
                         <a href="register.jsp" class="a text-light-blue">Register</a>
-                        <button class="button margin-v-20 box-shadow" name="login" value="login" style="width: 150px">Login</button>
+                        <button class="button margin-v-20 box-shadow" style="width: 150px">Login</button>
                     </div>
 
                 </form>

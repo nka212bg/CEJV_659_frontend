@@ -30,20 +30,18 @@
 
                 <br>
 
-                <form id="edit_user" method="POST" action="Login?login">
-                    <input type="text" class="input box-shadow" name="email" placeholder=" Email" />
+                <form id="edit_user" method="POST" action="http://localhost:8080/CEJV__659_backend/api/user/edit_user">
+                    <input type="text" class="input box-shadow" name="user_name" placeholder=" User Full Name" />
                     <br>
-                    <input type="text" class="input box-shadow" name="name" placeholder=" User Full Name" />
+                    <input type="text" class="input box-shadow" name="user_avatar" placeholder=" Avatar (URL / any image format)" />
                     <br>
-                    <input type="text" class="input box-shadow" name="avatar" placeholder=" Avatar (URL / any image format)" />
+                    <input type="password"  class="input box-shadow" name="user_password" placeholder=" Password (Only if is needed.)"/>
                     <br>
-                    <input type="password"  class="input box-shadow" name="password" placeholder=" Password (Only if is needed.)"/>
-                    <br>
-                    <input type="password" class="input box-shadow" name="confirm_password" placeholder=" Confirm Password" />
+                    <input type="password" class="input box-shadow" name="confirm_user_password" placeholder=" Confirm Password" />
 
                     <div class="space-between">
                         <a></a>
-                        <button class="button margin-v-20 box-shadow" name="edit" value="edit" style="width: 150px">Edit</button>
+                        <button class="button margin-v-20 box-shadow" style="width: 150px">Edit</button>
                     </div>
 
                 </form>
@@ -54,13 +52,13 @@
 
 
         <!--footer -------------->
-       <jsp:include page="./includes/footer.jsp" />
+        <jsp:include page="./includes/footer.jsp" />
         <script>
-           
-            document.forms["edit_user"].avatar.onblur = () => {
+
+            document.forms["edit_user"].user_avatar.onblur = () => {
                 console.log(document.querySelectorAll(".menu_logo_image"));
                 document.querySelectorAll(".user-logo").forEach((e) => {
-                    e.src = document.forms["edit_user"].avatar.value;
+                    e.src = document.forms["edit_user"].user_avatar.value;
                 });
             }
 

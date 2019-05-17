@@ -33,7 +33,7 @@
 
                 <br>
 
-                <form id="add_user" method="POST" action="http://localhost:8080/CEJV__659_backend/api/user/add_user">
+                <form id="register" method="POST" action="http://localhost:8080/CEJV__659_backend/api/user/register">
                     <input type="text" class="input box-shadow" name="user_email" placeholder=" Email" />
                     <br>
                     <input type="text" class="input box-shadow" name="user_name" placeholder=" User Full Name" />
@@ -64,7 +64,7 @@
             <jsp:include page="./includes/footer.jsp" />
             <script>
 
-                document.forms["add_user"].user_avatar.onblur = () => {
+                document.forms["register"].user_avatar.onblur = () => {
                     console.log(document.querySelectorAll(".menu_logo_image"));
                     document.querySelectorAll(".user-logo").forEach((e) => {
                         e.src = document.forms["add_user"].user_avatar.value;
