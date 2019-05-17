@@ -30,7 +30,7 @@
 
                     <div class="space-between">
                         <a href="register.jsp" class="a text-light-blue">Register</a>
-                        <button class="button margin-v-20 box-shadow" style="width: 150px">Login</button>
+                        <button class="button margin-v-20 box-shadow" style="width: 150px" >Login</button>
                     </div>
 
                 </form>

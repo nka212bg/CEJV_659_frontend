@@ -17,11 +17,12 @@
                     <i class="icon"></i> <span class="capitalize bold" >collections</span>
                 </a>
             </div>
-
+                <p class="text-white">  ${sessionScope.user_id}</p>
             <div style="padding-right: 10px; margin-bottom: -4px">
                 <i class="icon a" title="contact us"></i>
-                <i class="icon a margin-h-20" title="feedback"></i>
-                <i class="icon a" title="FAQ"></i>
+                <i class="icon a margin-left" title="feedback"></i>
+                <i class="icon a margin-left" title="FAQ"></i>
+                <a href="http://localhost:8080/CEJV__659_backend/api/user/logout"><i class="icon a margin-left" title="Logout"></i></a>
             </div>
         </div> 
 
