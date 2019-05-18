@@ -7,14 +7,14 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-async function ajax(url) {
+async function ajax(url, data="") {
     return await new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.open('POST', url, true);
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onload = () => resolve(xhr.responseText);
         xhr.onerror = () => reject(xhr.statusText);
-        xhr.send();
+        xhr.send(data);
     });
 }
 
