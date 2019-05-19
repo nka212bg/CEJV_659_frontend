@@ -34,8 +34,7 @@
                     <div>
                         <i onclick="collectionManager().deleteCollection(window.location.search.split('=')[1])" class="icon a text-orange bg-light-blue border_radius" 
                            style="position: absolute; font-size: 1.5em; padding: 5px;margin: 5px;z-index: 2" title="Delete collection"></i>
-                        <img class="user-logo box-shadow" src="" 
-                             onerror="this.src='./resources/img/logo.jpg'" style="width: 150px; height: 150px;"/>
+                        <img class="user-logo box-shadow" src="" id="collection_logo" onerror="this.src='./resources/img/logo.jpg'" style="width: 150px; height: 150px;"/>
                     </div>
                 </div>
 
@@ -68,9 +67,23 @@
         <!--footer -------------->
         <jsp:include page="./includes/footer.jsp" />
         <script>
-            document.forms["edit_collection"].collection_cover.onblur = () => {
-                document.querySelector("#collection_logo").src = document.forms["edit_collection"].collection_cover.value;
+            var form = document.forms["edit_collection"];
+            form.collection_cover.onblur = () => {
+                console.log(form.collection_cover.value);
+                document.querySelector("#collection_logo").src = form.collection_cover.value;
             }
+
+            ajax('http://localhost:8080/CEJV__659_backend/api/collections/get_collection/' + sessionManager().getSessionId() + "/" + +window.location.search.split('=')[1]).then((e) => {
+                console.log(e);
+                console.log(e.slice(0, 36));
+                e = JSON.parse(e.replace(/(?:\r\n|\r|\n)/g, ' '));
+                console.log(e);
+                form["collection_name"].value = e.collection_name;
+                form["collection_genre"].value = e.collection_genre;
+                form["collection_cover"].value = e.collection_cover;
+                form["collection_note"].value = e.collection_note;
+                document.querySelector("#collection_logo").src = e.collection_cover;
+            });
 
         </script>
 

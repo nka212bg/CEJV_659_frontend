@@ -1,13 +1,14 @@
 "use strict";
 document.addEventListener('readystatechange', event => {
-    if (event.target.readyState === 'loading') {
-        console.log('loading');
-    }
+    sessionManager().checkForUser();
+
     if (event.target.readyState === 'interactive') {
         console.log('DOM interactive...');
+        iterator();
+
     }
     if (event.target.readyState === 'complete') {
-        console.log('DOM completed');
+        console.log('DOM completed...');
         $("#lazy_loader").fadeOut(1000, function () {
             $(this).hide();
         });
@@ -25,6 +26,53 @@ async function ajax(url, data = "") {
         xhr.onerror = () => reject(xhr.statusText);
         xhr.send(data);
     });
+}
+
+
+function iterator() {
+
+    var all_elements = [];
+    document.querySelectorAll("*").forEach(attr => {
+        if ("for" in attr.attributes) {
+            all_elements.push(attr);
+//            attr.style.display = "none"; 
+        }
+    });
+
+    all_elements.forEach(element => {
+        var url = element.attributes.for.value;
+        element.removeAttribute("for");
+        var htmlElementContent = element.innerHTML.replace(/\s\s+/g, ' ').trim();
+        element.innerHTML = "";
+
+        ajax(eval(url)).then((res) => {
+            res = JSON.parse(res.replace(/(?:\r\n|\r|\n)/g, ' '));
+            console.log(res);
+            for (var w in res) {
+                element.insertAdjacentHTML('beforeend', elementConstruct(res[w], htmlElementContent));
+            }
+//            element.style.display = "block";
+        });
+
+    });
+
+    function elementConstruct(objectItem, element) {
+        var temp = element;
+        var constructedElement = "";
+        if (element.indexOf("{{") !== -1 && element.indexOf("}}") !== -1) {
+            var start = element.indexOf("{{");
+            var end = element.indexOf("}}") + 2;
+            var userParam = element.substring(start + 2, end - 2).trim();
+
+            var beforeStart = element.substring(0, start);
+            var afterObject = element.substring(end, element.length);
+
+            constructedElement += beforeStart + objectItem[userParam] + afterObject;
+            return elementConstruct(objectItem, constructedElement);
+        } else {
+            return temp;
+        }
+    }
 }
 
 
@@ -140,7 +188,7 @@ function formManager(_this) {
 }
 
 
-sessionManager().checkForUser();
+
 function sessionManager() {
     return {
         login: (e) => {

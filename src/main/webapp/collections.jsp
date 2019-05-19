@@ -43,52 +43,23 @@
         </div>
 
 
-        <div id="collections" style="width: 100%; padding-top: 40px">
+        <div id="collections" style="width: 100%; padding-top: 40px" for="'http://localhost:8080/CEJV__659_backend/api/collections/get_all_collections/' + sessionManager().getSessionId()">
+
 
             <div class="center-div box-shadow space-between collection" style="margin-bottom: 30px !important">
-                <img class="cover_item" src="https://cdn.shopify.com/s/files/1/0155/8763/products/RDF074_Front_WEB_WIDE.jpg"/>
+                <img class="cover_item" src="{{ collection_cover }}"/> 
                 <div class="padding-30 content_item">
                     <div class="space-between">
-                        <h2 class="first_upper">My first vinyl collection</h2>
-                        <div style="margin-top: -51px; margin-right: -15px; background: lightgray; padding: 12px 0px 4px 0px; border-radius: 5px;">
-                            <a href="#"><i class="icon a padding-10"></i></a>
+                        <h2 class="first_upper">{{ collection_name }}</h2>
+                        <div style="margin-top: -51px; margin-right: -15px;  padding: 12px 0px 4px 0px; ">
+                            <a href="./edit_collection.jsp?id={{ collection_id }}"><i class="icon a padding-10" style="background: lightgray;border-radius: 5px;" title="edit"></i></a>
+                            <a href="./vinyls.jsp?id={{ collection_id }}"><i class="icon a padding-10" style="background: lightgray;border-radius: 5px;" title="go to"></i></a>
                         </div>
                     </div>
-                    <p class="first_upper bubble">rock</p>
-                    <p style="text-align: justify">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using</p>
+                    <p class="first_upper bubble">{{ collection_genre }}</p>
+                    <p style="text-align: justify">{{ collection_note }}</p>
                 </div>
             </div>  
-
-
-            <div class="center-div box-shadow space-between collection" style="margin-bottom: 30px !important">
-                <img class="cover_item" src="https://cdn.shopify.com/s/files/1/0946/3300/products/BACK-Vinyl_Record_PSD_MockUp-SQUARE_2048x.png?v=1528476468"/>
-                <div class="padding-30 content_item">
-                    <div class="space-between">
-                        <h2 class="first_upper">My first vinyl collection</h2>
-                        <div style="margin-top: -51px; margin-right: -15px; background: lightgray; padding: 12px 0px 4px 0px; border-radius: 5px;">
-                            <a href="#"><i class="icon a padding-10"></i></a>
-                        </div>
-                    </div>
-                    <p class="first_upper bubble">classic</p>
-                    <p style="text-align: justify">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-            </div> 
-
-
-            <div class="center-div box-shadow space-between collection" style="margin-bottom: 30px !important">
-                <img class="cover_item" src="https://www.billboard.com/files/styles/article_main_image/public/media/vinyl-record-collection-player-2015-billboard-650.jpg"/>
-                <div class="padding-30 content_item">
-                    <div class="space-between">
-                        <h2 class="first_upper">My first vinyl collection</h2>
-                        <div style="margin-top: -51px; margin-right: -15px; background: lightgray; padding: 12px 0px 4px 0px; border-radius: 5px;">
-                            <i class="icon a padding-10"></i>
-                        </div>
-                    </div>
-                    <p class="first_upper bubble">pop</p>
-                    <p style="text-align: justify">Dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                </div>
-            </div> 
-
 
 
 
