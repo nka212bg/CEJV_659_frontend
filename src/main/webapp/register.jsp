@@ -33,7 +33,11 @@
 
                 <br>
 
-                <form id="register" method="POST" action="http://localhost:8080/CEJV__659_backend/api/user/register">
+
+                <form id="register" onsubmit="event.preventDefault(), formManager(this).setData('http://localhost:8080/CEJV__659_backend/api/user/register').then((e) => {
+                                sessionManager().register(e);
+                            })">
+
                     <input type="text" class="input box-shadow" name="user_email" placeholder=" Email" />
                     <br>
                     <input type="text" class="input box-shadow" name="user_name" placeholder=" User Full Name" />
@@ -67,7 +71,7 @@
                 document.forms["register"].user_avatar.onblur = () => {
                     console.log(document.querySelectorAll(".menu_logo_image"));
                     document.querySelectorAll(".user-logo").forEach((e) => {
-                        e.src = document.forms["add_user"].user_avatar.value;
+                        e.src = document.forms["register"].user_avatar.value;
                     });
                 }
 

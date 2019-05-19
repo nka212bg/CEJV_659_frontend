@@ -1,11 +1,10 @@
 <%@page pageEncoding="UTF-8"%>
-<script src="../resources/js/sessionManager.js" type="text/javascript"></script>
 <!--Header MENU-->
 <div class="space-between vertica-align-flex padding-5" style="background: rgba(0,76,144,0.5)">
     <div class="space-between vertica-align-flex" style="">
 
         <a href="./edit_user.jsp" style="cursor: pointer;">
-            <img class="user-logo box-shadow" src="./users/${sessionScope.user_id}/logo.jpg" onerror="this.src = './resources/img/logo.jpg'" />
+            <img class="user-logo box-shadow" src="" onerror="this.src = './resources/img/logo.jpg'" />
         </a> 
 
         <a href="./collections.jsp" class="margin-left home_menu a homeLink" >
@@ -17,7 +16,9 @@
         <i class="icon a" title="contact us"></i>
         <i class="icon a margin-left" title="feedback"></i>
         <i class="icon a margin-left" title="FAQ"></i>
-        <a href="http://localhost:8080/CEJV__659_backend/api/user/logout"><i class="icon a margin-left" title="Logout"></i></a>
+        <i onclick="sessionManager().logOut()" class="icon a margin-left text-orange" title="Logout"></i>
     </div>
 </div> 
-        
+<script>
+    document.querySelector(".user-logo").src = sessionManager().getUser().user_avatar;
+</script>

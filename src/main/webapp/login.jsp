@@ -22,7 +22,9 @@
                 <h1 class="text-blue capitalize" style="line-height: 0">login</h1>
                 <span class="text-blue capitalize">enter your login credentials</span>
                 <br/> <br/>
-                <form id="login" onsubmit="login(this, event)">
+                <form id="login" onsubmit="event.preventDefault(), formManager(this).setData('http://localhost:8080/CEJV__659_backend/api/user/login').then((e) => {
+                            sessionManager().login(e);
+                        })">
                     <input type="text" class="input box-shadow" name="user_email" placeholder=" Email" />
                     <br>
 
@@ -48,16 +50,7 @@
         <!--footer -------------->
         <jsp:include page="./includes/footer.jsp" />
         <script>
-            function login(_this, event) {
-                event.preventDefault();
-                var url = "http://localhost:8080/CEJV__659_backend/api/user/login";
-                var data = "user_email=" + _this["user_email"].value + "&user_password=" + _this["user_password"].value;
-                ajax(url, data).then((e) => {
-                    e = JSON.parse(e);
-                    console.log(e);
-                    document.cookie = "SessionLinker=" + e.SessionLinker;
-                });
-            }
+
 
 
 

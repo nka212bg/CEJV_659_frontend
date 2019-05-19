@@ -23,14 +23,17 @@
                         <h1 class="text-blue capitalize" style="line-height: 0">edit profile</h1>
                         <span class="text-blue capitalize">enter your new credentials</span>
                     </div>
-
-                    <img class="user-logo box-shadow" src="${pageContext.request.contextPath}/users/${sessionScope.user_id}/logo.jpg" 
-                         onerror="this.src='${pageContext.request.contextPath}/resources/img/logo.jpg'" style="width: 150px; height: 150px;"/>
+                    <div>
+                        <i onclick="sessionManager().deleteUser()" class="icon a text-orange bg-light-blue border_radius" style="position: absolute; font-size: 1.5em; padding: 5px;margin: 5px;z-index: 2" title="Delete user"></i>
+                        <img class="user-logo box-shadow" src="${pageContext.request.contextPath}/users/${sessionScope.user_id}/logo.jpg" 
+                             onerror="this.src='${pageContext.request.contextPath}/resources/img/logo.jpg'" style="width: 150px; height: 150px;"/>
+                    </div>
                 </div>
 
                 <br>
 
-                <form id="edit_user" method="POST" action="http://localhost:8080/CEJV__659_backend/api/user/edit_user">
+                <form id="edit_user" onsubmit="event.preventDefault(), formManager(this).setData('http://localhost:8080/CEJV__659_backend/api/user/edit_user/' + sessionManager().getSessionId())" 
+                      >
                     <input type="text" class="input box-shadow" name="user_name" placeholder=" User Full Name" />
                     <br>
                     <input type="text" class="input box-shadow" name="user_avatar" placeholder=" Avatar (URL / any image format)" />
@@ -40,7 +43,7 @@
                     <input type="password" class="input box-shadow" name="confirm_user_password" placeholder=" Confirm Password" />
 
                     <div class="space-between">
-                        <a></a>
+                        <div></div>
                         <button class="button margin-v-20 box-shadow" style="width: 150px">Edit</button>
                     </div>
 
@@ -56,11 +59,23 @@
         <script>
 
             document.forms["edit_user"].user_avatar.onblur = () => {
-                console.log(document.querySelectorAll(".menu_logo_image"));
                 document.querySelectorAll(".user-logo").forEach((e) => {
                     e.src = document.forms["edit_user"].user_avatar.value;
                 });
             }
+
+            var form = document.forms["edit_user"];
+            ajax('http://localhost:8080/CEJV__659_backend/api/user/get_user/' + sessionManager().getSessionId()).then((e) => {
+                e = JSON.parse(e);
+                console.log(e);
+                form["user_name"].value = e.user_name;
+                form["user_avatar"].value = e.user_avatar;
+                document.querySelectorAll(".user-logo").forEach((e) => {
+                    e.src = document.forms["edit_user"].user_avatar.value;
+                });
+
+
+            });
 
 
         </script>

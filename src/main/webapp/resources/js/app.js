@@ -1,13 +1,22 @@
-"use strict"
-document.addEventListener('DOMContentLoaded', function () {
-    $("#lazy_loader").fadeOut(1000, function () {
-        $(this).hide();
-    });
-    
+"use strict";
+document.addEventListener('readystatechange', event => {
+    if (event.target.readyState === 'loading') {
+        console.log('loading');
+    }
+    if (event.target.readyState === 'interactive') {
+        console.log('DOM interactive...');
+    }
+    if (event.target.readyState === 'complete') {
+        console.log('DOM completed');
+        $("#lazy_loader").fadeOut(1000, function () {
+            $(this).hide();
+        });
+    }
 });
 
 
-async function ajax(url, data="") {
+
+async function ajax(url, data = "") {
     return await new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.open('POST', url, true);
@@ -17,7 +26,6 @@ async function ajax(url, data="") {
         xhr.send(data);
     });
 }
-
 
 
 //* function for display and hide a containers ------------*/
@@ -108,6 +116,94 @@ function  confirmWindow(message, callback) {
     }
 }
 
+
+sessionManager().checkForUser();
+function sessionManager() {
+    return {
+        login: (e) => {
+            e = JSON.parse(e);
+            if (Object.keys(e).indexOf("SessionLinker") !== -1) {
+                localStorage.clear();
+                localStorage.setItem("SessionLinker", JSON.stringify(e));
+                location.replace("./collections.jsp");
+            } else {
+                getSystemMessage("bad", "<b>Unsuccess!</b><br>" + e.message);
+            }
+
+        },
+        register: (e) => {
+            e = JSON.parse(e);
+            console.log(e);
+            if (Object.keys(e).indexOf("SessionLinker") !== -1) {
+                localStorage.clear();
+                localStorage.setItem("SessionLinker", JSON.stringify(e));
+                location.replace("./collections.jsp");
+            } else {
+                getSystemMessage("bad", "<b>Unsuccess!</b><br>" + e.message);
+            }
+        },
+        logOut: () => {
+            localStorage.clear();
+            location.replace("./login.jsp");
+        },
+        getUser: () => {
+            if (localStorage.getItem('SessionLinker')) {
+                return JSON.parse(localStorage.getItem('SessionLinker'));
+            }
+        },
+        getSessionId: () => {
+            if (localStorage.getItem('SessionLinker')) {
+                return JSON.parse(localStorage.getItem('SessionLinker')).SessionLinker;
+            }
+        },
+        checkForUser: () => {
+            var fileName = window.location.pathname.split("/")[window.location.pathname.split("/").length - 1].trim();
+            console.log(!sessionManager().getSessionId());
+            if (!sessionManager().getSessionId()) {
+                if (!(fileName.indexOf("login.jsp") !== -1 || fileName.indexOf("register.jsp") !== -1)) {
+                    window.location.href = "./login.jsp";
+                }
+            }
+            if (sessionManager().getSessionId()) {
+                if ((fileName.indexOf("login.jsp") !== -1 || fileName.indexOf("register.jsp") !== -1)) {
+                    window.location.href = "./collections.jsp";
+                }
+            }
+        },
+        deleteUser: () => {
+            confirmWindow("Are you sure you want to delete your profile?", () => {
+                ajax('http://localhost:8080/CEJV__659_backend/api/user/delete/' + sessionManager().getSessionId()).then(() => {
+                    localStorage.clear();
+                    window.location.href = "./register.jsp";
+                })
+            }
+            );
+        }
+
+    }
+}
+
+
+function formManager(_this) {
+    return {
+        setData: (url) => {
+            var data = "";
+            for (var i = 0; i < _this.length; i++) {
+                if (_this[i].nodeName == "INPUT") {
+                    data += _this[i].name + "=" + _this[i].value;
+                }
+                if (i < _this.length - 2) {
+                    data += "&";
+                }
+            }
+            var q = ajax(url, data);
+            return q;
+        },
+        getData: (_this, url) => {
+            alert();
+        }
+    }
+}
 
 
 

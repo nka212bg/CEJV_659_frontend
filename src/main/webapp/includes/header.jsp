@@ -4,6 +4,7 @@
 <head>
     <meta http-equiv="Content-Type"  content="text/html; charset=UTF-8">
     <title>${param.title}</title>
+    <script src="./resources/js/app.js" type="text/javascript"></script>
     <link rel="icon" type="image/png" href="${pageContext.request.contextPath}/resources/img/logo.png" />
     <link href="${pageContext.request.contextPath}/resources/css/app.css" rel="stylesheet" type="text/css"/>
 </head>
