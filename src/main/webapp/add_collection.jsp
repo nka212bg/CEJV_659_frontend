@@ -22,20 +22,35 @@
 
         <div class="padding-30">
             <div class="padding-30" style="width: 350px;">
-                <h1 class="text-blue capitalize" style="line-height: 0;">add new collection</h1>
-                <br/>
-                <form id="login" method="POST" action="Login?login">
-                    <input type="text" class="input box-shadow" name="collection_email" placeholder=" Collection Name" />
+
+
+
+
+                <div class="space-between">
+
+                    <h1 class="text-blue capitalize" style="line-height: 30px;">add new <br>collection</h1>
+
+
+                    <img class="user-logo box-shadow" src="" id="collection_logo" onerror="this.src='./resources/img/logo.jpg'" style="width: 150px; height: 150px;"/>
+                </div>
+
+                <br>
+
+
+                <form id="add_collection" onsubmit="event.preventDefault(), formManager(this).setData('http://localhost:8080/CEJV__659_backend/api/collections/add_collection/' + sessionManager().getSessionId()).then((e) => {
+                            collectionManager().addCollection(e);
+                        })">
+                    <input type="text" class="input box-shadow" name="collection_name" placeholder=" Collection Name" />
                     <br>
-                    <input type="text" class="input box-shadow" name="genre" placeholder=" Genre" />
+                    <input type="text" class="input box-shadow" name="collection_genre" placeholder=" Genre" />
                     <br>
                     <input type="text" class="input box-shadow" name="collection_cover" placeholder="  Cover (URL / any image format)" />
                     <br>
-                    <textarea class="input box-shadow" style="min-height: 100px" placeholder=" Note..."></textarea>
+                    <textarea name="collection_note" class="input box-shadow" style="min-height: 100px" placeholder=" Note..."></textarea>
 
                     <div class="space-between">
                         <a></a>
-                        <button class="button margin-v-20 box-shadow" name="add_collection" style="width: 150px">Add</button>
+                        <button class="button margin-v-20 box-shadow" style="width: 150px">Add</button>
                     </div>
 
                 </form>
@@ -46,6 +61,13 @@
 
 
         <!--footer -------------->
-        <div style="position: fixed; bottom: 0; right: 0"><jsp:include page="./includes/footer.jsp" /></div>
+        <jsp:include page="./includes/footer.jsp" />
+        <script>
+            document.forms["add_collection"].collection_cover.onblur = () => {
+                document.querySelector("#collection_logo").src = document.forms["add_collection"].collection_cover.value;
+            }
+
+        </script>
+
     </body>
 </html>

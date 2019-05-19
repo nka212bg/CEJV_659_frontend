@@ -117,6 +117,29 @@ function  confirmWindow(message, callback) {
 }
 
 
+
+function formManager(_this) {
+    return {
+        setData: (url) => {
+            var data = "";
+            for (var i = 0; i < _this.length; i++) {
+                if (_this[i].nodeName == "INPUT" || _this[i].nodeName == "TEXTAREA") {
+                    data += _this[i].name + "=" + _this[i].value;
+                }
+                if (i < _this.length - 2) {
+                    data += "&";
+                }
+            }
+            var q = ajax(url, data);
+            return q;
+        },
+        getData: (_this, url) => {
+            alert();
+        }
+    }
+}
+
+
 sessionManager().checkForUser();
 function sessionManager() {
     return {
@@ -156,6 +179,10 @@ function sessionManager() {
                 return JSON.parse(localStorage.getItem('SessionLinker')).SessionLinker;
             }
         },
+        setUser: (e) => {
+            e = JSON.parse(e);
+            getSystemMessage("good", "<b>Success!</b><br>" + e.message);
+        },
         checkForUser: () => {
             var fileName = window.location.pathname.split("/")[window.location.pathname.split("/").length - 1].trim();
             console.log(!sessionManager().getSessionId());
@@ -184,28 +211,30 @@ function sessionManager() {
 }
 
 
-function formManager(_this) {
+
+
+
+function collectionManager() {
     return {
-        setData: (url) => {
-            var data = "";
-            for (var i = 0; i < _this.length; i++) {
-                if (_this[i].nodeName == "INPUT") {
-                    data += _this[i].name + "=" + _this[i].value;
-                }
-                if (i < _this.length - 2) {
-                    data += "&";
-                }
-            }
-            var q = ajax(url, data);
-            return q;
+        addCollection: (e) => {
+            e = JSON.parse(e);
+            getSystemMessage("good", "<b>Success!</b><br>" + e.message);
         },
-        getData: (_this, url) => {
-            alert();
+        editCollection: (e) => {
+            e = JSON.parse(e);
+            getSystemMessage("good", "<b>Success!</b><br>" + e.message);
+        },
+        deleteCollection: (collection_id) => {
+            confirmWindow("Are you sure you want to delete your profile?", () => {
+                ajax('http://localhost:8080/CEJV__659_backend/api/collections/delete/' + sessionManager().getSessionId() + "/" + collection_id).then(() => {
+                    window.location.href = "./collections.jsp";
+                })
+            }
+            );
         }
+
     }
 }
-
-
 
 
 

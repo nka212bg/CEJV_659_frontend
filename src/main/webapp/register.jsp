@@ -27,8 +27,8 @@
                         <span class="text-blue capitalize">enter your credentials</span>
                     </div>
 
-                    <img class="user-logo box-shadow" src="${pageContext.request.contextPath}/users/${sessionScope.user_id}/logo.jpg" 
-                         onerror="this.src='${pageContext.request.contextPath}/resources/img/logo.jpg'" style="width: 150px; height: 150px;"/>
+                    <img class="user-logo box-shadow" src="" 
+                         onerror="this.src='./resources/img/logo.jpg'" style="width: 150px; height: 150px;"/>
                 </div>
 
                 <br>
@@ -67,15 +67,12 @@
             <!--footer -------------->
             <jsp:include page="./includes/footer.jsp" />
             <script>
-
                 document.forms["register"].user_avatar.onblur = () => {
                     console.log(document.querySelectorAll(".menu_logo_image"));
                     document.querySelectorAll(".user-logo").forEach((e) => {
                         e.src = document.forms["register"].user_avatar.value;
                     });
                 }
-
-
             </script>
     </body>
 </html>
