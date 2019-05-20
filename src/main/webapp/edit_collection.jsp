@@ -73,7 +73,7 @@
                 document.querySelector("#collection_logo").src = form.collection_cover.value;
             }
 
-            ajax('http://localhost:8080/CEJV__659_backend/api/collections/get_collection/' + sessionManager().getSessionId() + "/" + +window.location.search.split('=')[1]).then((e) => {
+            ajax('http://localhost:8080/CEJV__659_backend/api/collections/get_collection/' + window.location.search.split('=')[1]).then((e) => {
                 console.log(e);
                 console.log(e.slice(0, 36));
                 e = JSON.parse(e.replace(/(?:\r\n|\r|\n)/g, ' '));

@@ -30,15 +30,15 @@
         <div class="text-white padding-10">
             <br>
             <span class="text-white">Temporary navigation</span> &nbsp;&nbsp;»&nbsp;&nbsp;
-            <a href="${pageContext.request.contextPath}/login.jsp" class="a capitalize">login</a>&nbsp;&nbsp;
-            <a href="${pageContext.request.contextPath}/register.jsp" class="a capitalize">register</a>&nbsp;&nbsp;
-            <a href="${pageContext.request.contextPath}/add_vinyl.jsp" class="a capitalize">add vinyl</a>&nbsp;&nbsp;
-            <a href="${pageContext.request.contextPath}/add_collection.jsp" class="a capitalize">add collection</a>&nbsp;&nbsp;
-            <a href="${pageContext.request.contextPath}/collections.jsp" class="a capitalize">collections</a>&nbsp;&nbsp;
-            <a href="${pageContext.request.contextPath}/edit_collection.jsp" class="a capitalize">edit collection</a>&nbsp;&nbsp;
-            <a href="${pageContext.request.contextPath}/edit_user.jsp" class="a capitalize">edit user</a>&nbsp;&nbsp;
-            <a href="${pageContext.request.contextPath}/edit_vinyl.jsp" class="a capitalize">edit vinyl</a>&nbsp;&nbsp;
-            <a href="${pageContext.request.contextPath}/vinyls.jsp" class="a capitalize">vinyls</a>&nbsp;&nbsp;
+            <a href="./login.jsp" class="a capitalize">login</a>&nbsp;&nbsp;
+            <a href="./register.jsp" class="a capitalize">register</a>&nbsp;&nbsp;
+            <a href="./add_vinyl.jsp" class="a capitalize">add vinyl</a>&nbsp;&nbsp;
+            <a href="./add_collection.jsp" class="a capitalize">add collection</a>&nbsp;&nbsp;
+            <a href="./collections.jsp" class="a capitalize">collections</a>&nbsp;&nbsp;
+            <a href="./edit_collection.jsp" class="a capitalize">edit collection</a>&nbsp;&nbsp;
+            <a href="./edit_user.jsp" class="a capitalize">edit user</a>&nbsp;&nbsp;
+            <a href="./edit_vinyl.jsp" class="a capitalize">edit vinyl</a>&nbsp;&nbsp;
+            <a href="./vinyls.jsp" class="a capitalize">vinyls</a>&nbsp;&nbsp;
 
         </div>
 

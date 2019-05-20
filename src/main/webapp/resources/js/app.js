@@ -48,9 +48,18 @@ function iterator() {
         ajax(eval(url)).then((res) => {
             res = JSON.parse(res.replace(/(?:\r\n|\r|\n)/g, ' '));
             console.log(res);
-            for (var w in res) {
-                element.insertAdjacentHTML('beforeend', elementConstruct(res[w], htmlElementContent));
+
+            if (Array.isArray(res)) {
+                console.log("Array -----------");
+                for (var w = 0; w <= res.length; w++) {
+                    element.insertAdjacentHTML('beforeend', elementConstruct(res[w], htmlElementContent));
+                }
             }
+            if (typeof res === 'object') {
+                console.log("object -------------");
+                element.insertAdjacentHTML('beforeend', elementConstruct(res, htmlElementContent));
+            }
+
 //            element.style.display = "block";
         });
 
