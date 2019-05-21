@@ -1,22 +1,40 @@
 "use strict";
-document.addEventListener('readystatechange', event => {
-    sessionManager().checkForUser();
+function lifecycleMount(callback = null, phase = null) {
+    if (callback != null && phase != null) {
+        document.addEventListener('readystatechange', event => {
+            if (event.target.readyState === 'interactive' && phase == 1) {
+                console.log('DOM phase 1 interactive...');
+                callback();
 
-    if (event.target.readyState === 'interactive') {
-        console.log('DOM interactive...');
-        iterator();
-
-    }
-    if (event.target.readyState === 'complete') {
-        console.log('DOM completed...');
-        $("#lazy_loader").fadeOut(1000, function () {
-            $(this).hide();
+            }
+            if (event.target.readyState === 'complete' && phase == 2) {
+                console.log('DOM phase 2 completed...');
+                callback();
+            }
+            if (event.target.readyState === 'complete' && phase == 3) {
+                console.log('DOM phase 3 completed with delay 300ms...');
+                setTimeout(callback, 500);
+            }
         });
-    }
-});
+    } else if (callback != null) {
+        document.addEventListener('readystatechange', event => {
+            if (event.target.readyState === 'complete') {
+                console.log('DOM phase 2 completed (lifecycleMount - from else) ...');
+                callback();
+            }
+        });
+
+}
+}
+//* App init  ------------*/
+sessionManager().checkForUser();
+lifecycleMount(iterator, 1);
+lifecycleMount(lazyLoaderRemove);
 
 
 
+
+//*ajax function ------------*/
 async function ajax(url, data = "") {
     return await new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
@@ -28,14 +46,50 @@ async function ajax(url, data = "") {
     });
 }
 
+//*get all the form data and give to ajax(); ------------*/
+function formManager(form) {
+    return {
+        setData: (url) => {
+            var serialized = [];
+            for (var i = 0; i < form.elements.length; i++) {
+                var field = form.elements[i];
+                if (!field.name || field.disabled || field.type === 'file' || field.type === 'reset' || field.type === 'submit' || field.type === 'button') {
+                    continue;
+                }
+                if (field.type === 'select-multiple') {
+                    for (var n = 0; n < field.options.length; n++) {
+                        if (!field.options[n].selected)
+                            continue;
+                        serialized.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(field.options[n].value));
+                    }
+                } else if ((field.type !== 'checkbox' && field.type !== 'radio') || field.checked) {
+                    serialized.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(field.value));
+                }
+            }
+            var q = ajax(url, serialized.join('&'));
+            console.log(serialized.join('&'));
+            return q;
+        }
+    }
+}
 
+
+//*Remove the lazy loader after DOM loade ------------*/
+function lazyLoaderRemove() {
+    $("#lazy_loader").fadeOut(1000, function () {
+        $(this).hide();
+    });
+}
+
+
+//*Iterating objects in the HTML (for loop) ------------*/
 function iterator() {
 
     var all_elements = [];
     document.querySelectorAll("*").forEach(attr => {
         if ("for" in attr.attributes) {
             all_elements.push(attr);
-//            attr.style.display = "none"; 
+//          attr.style.display = "none"; 
         }
     });
 
@@ -45,22 +99,21 @@ function iterator() {
         var htmlElementContent = element.innerHTML.replace(/\s\s+/g, ' ').trim();
         element.innerHTML = "";
 
-        ajax(eval(url)).then((res) => {
+        ajax(eval(url).toString()).then((res) => {
             res = JSON.parse(res.replace(/(?:\r\n|\r|\n)/g, ' '));
             console.log(res);
 
             if (Array.isArray(res)) {
-                console.log("Array -----------");
                 for (var w = 0; w <= res.length; w++) {
-                    element.insertAdjacentHTML('beforeend', elementConstruct(res[w], htmlElementContent));
+                    if (res[w] != undefined) {
+                        element.insertAdjacentHTML('beforeend', elementConstruct(res[w], htmlElementContent));
+                    }
                 }
             }
             if (typeof res === 'object') {
-                console.log("object -------------");
                 element.insertAdjacentHTML('beforeend', elementConstruct(res, htmlElementContent));
             }
-
-//            element.style.display = "block";
+//          element.style.display = "block";
         });
 
     });
@@ -76,13 +129,28 @@ function iterator() {
             var beforeStart = element.substring(0, start);
             var afterObject = element.substring(end, element.length);
 
-            constructedElement += beforeStart + objectItem[userParam] + afterObject;
-            return elementConstruct(objectItem, constructedElement);
+            if (objectItem[userParam] != undefined) {
+                constructedElement += beforeStart + objectItem[userParam] + afterObject;
+                return elementConstruct(objectItem, constructedElement);
+            }
         } else {
             return temp;
         }
     }
 }
+
+
+//*URL paramethers to js object converter ------------*/
+function urlParam() {
+    var keyObj = {};
+    var key = window.location.search.trim().substr(1).split("&");
+    key.forEach((e) => {
+        e = e.split("=");
+        keyObj[e[0]] = e[1];
+    });
+    return keyObj;
+}
+
 
 
 //* function for display and hide a containers ------------*/
@@ -101,7 +169,6 @@ function showHide(element, userValue, recursive = false) {
 function getSystemMessage(status, message) {
     var color = "";
     var icon = "";
-
     if (message !== "") {
         $(".systemMessage").fadeOut("normal", function () {
             $(this).remove();
@@ -117,27 +184,6 @@ function getSystemMessage(status, message) {
             runMessage();
         }
     }
-
-    if ((document.cookie.indexOf('message_good=') !== -1) || (document.cookie.indexOf('message_bad=') !== -1)) {
-        $(".systemMessage").fadeOut("normal", function () {
-            $(this).remove();
-        });
-        if (document.cookie.indexOf('message_bad=') !== -1) {
-            message = document.cookie.replace(/(?:(?:^|.*;\s*)message_bad\s*\=\s*([^;]*).*$)|^.*$/, "$1").replace(/["']/g, "");
-            color = "#ff4400";
-            icon = "";
-            document.cookie = 'message_bad=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-            runMessage();
-        }
-        if (document.cookie.indexOf('message_good=') !== -1) {
-            message = document.cookie.replace(/(?:(?:^|.*;\s*)message_good\s*\=\s*([^;]*).*$)|^.*$/, "$1").replace(/["']/g, "");
-            color = "white";
-            icon = "";
-            document.cookie = 'message_good=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-            runMessage();
-        }
-    }
-
     function runMessage() {
         var messageHolder = '<div class="systemMessage" style="color: ' + color + ';"><div class="systemMessageMessage"><i class="icon" style="font-size: 20px">' + icon + ' </i>' + message + '</div></div>';
         document.body.insertAdjacentHTML('afterend', messageHolder);
@@ -147,7 +193,6 @@ function getSystemMessage(status, message) {
             });
         }, 8000);
     }
-
 }
 
 
@@ -164,7 +209,6 @@ function  confirmWindow(message, callback) {
             callback();
         });
     }
-
     document.getElementById("no").onmousedown = () => {
         document.body.removeAttribute("style");
         $("#confirm_window").fadeOut(300, function () {
@@ -174,30 +218,7 @@ function  confirmWindow(message, callback) {
 }
 
 
-
-function formManager(_this) {
-    return {
-        setData: (url) => {
-            var data = "";
-            for (var i = 0; i < _this.length; i++) {
-                if (_this[i].nodeName == "INPUT" || _this[i].nodeName == "TEXTAREA") {
-                    data += _this[i].name + "=" + _this[i].value;
-                }
-                if (i < _this.length - 2) {
-                    data += "&";
-                }
-            }
-            var q = ajax(url, data);
-            return q;
-        },
-        getData: (_this, url) => {
-            alert();
-        }
-    }
-}
-
-
-
+//*Manage the session state of the user ------------*/
 function sessionManager() {
     return {
         login: (e) => {
@@ -242,7 +263,7 @@ function sessionManager() {
         },
         checkForUser: () => {
             var fileName = window.location.pathname.split("/")[window.location.pathname.split("/").length - 1].trim();
-            console.log(!sessionManager().getSessionId());
+            console.log("Session is set ->" + sessionManager().getSessionId());
             if (!sessionManager().getSessionId()) {
                 if (!(fileName.indexOf("login.jsp") !== -1 || fileName.indexOf("register.jsp") !== -1)) {
                     window.location.href = "./login.jsp";
@@ -268,9 +289,7 @@ function sessionManager() {
 }
 
 
-
-
-
+//*Helper collection manager ------------*/
 function collectionManager() {
     return {
         addCollection: (e) => {
@@ -282,7 +301,7 @@ function collectionManager() {
             getSystemMessage("good", "<b>Success!</b><br>" + e.message);
         },
         deleteCollection: (collection_id) => {
-            confirmWindow("Are you sure you want to delete your profile?", () => {
+            confirmWindow("Are you sure you want to delete this collection?", () => {
                 ajax('http://localhost:8080/CEJV__659_backend/api/collections/delete/' + sessionManager().getSessionId() + "/" + collection_id).then(() => {
                     window.location.href = "./collections.jsp";
                 })
@@ -294,6 +313,25 @@ function collectionManager() {
 }
 
 
+//*Helper vinyl manager ------------*/
+function vinylManager() {
+    return {
+        addVinyl: () => {
+            getSystemMessage("good", "<b>Success!</b><br>");
+        },
+        editVinyl: () => {
+            getSystemMessage("good", "<b>Success!</b><br>The vinyl was edited");
+        },
+        deleteVinyl: (vinyl_id) => {
+            confirmWindow("Are you sure you want to delete this vinyl?", () => {
+                ajax('http://localhost:8080/CEJV__659_backend/api/vinyls/delete/' + vinyl_id).then(() => {
+                    window.history.back();
+                })
+            }
+            );
+        }
 
+    }
+}
 
 

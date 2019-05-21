@@ -20,7 +20,7 @@
 
 
         <div class="mid-div hidden" id="empty_page" >
-            <a href="${pageContext.request.contextPath}/add_collection.jsp" class="a"> 
+            <a href="./add_collection.jsp" class="a"> 
                 <i class="icon center-div" style="font-size: 10em"></i>
                 <p>You have no collections yet</p>
             </a>

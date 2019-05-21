@@ -9,7 +9,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     </head>
-      <body class="page bg-image">
+    <body class="page bg-image">
 
         <!--header menu -------------->
         <jsp:include page="./includes/header_menu.jsp" />
@@ -19,33 +19,53 @@
         </jsp:include>
 
 
- 
+
+
         <div class="padding-30">
             <div class="padding-30" style="width: 350px;">
-                <h1 class="text-blue capitalize" style="line-height: 0;">add new vinyl</h1>
+                <div class="space-between">
+                    <h1 class="text-blue capitalize" style="line-height: 30px;">add vinyl</h1>
+                    <div>
+
+                        <img class="user-logo box-shadow" src="" id="vinyl_logo" onerror="this.src='./resources/img/logo.jpg'" style="width: 150px; height: 150px;"/>
+                    </div>
+                </div>
+
                 <br/>
-                <form id="login" method="POST" action="Login?login">
-                    <input type="text" class="input box-shadow" name="vinyl_email" placeholder=" Artist/Group Name" />
+
+                <form id="add_vinyl" onsubmit="event.preventDefault(), formManager(this).setData('http://localhost:8080/CEJV__659_backend/api/vinyls/add_vinyl/').then(() => {
+                            window.history.back();
+                        })">      
+
+                    <select class="input box-shadow" name="collection_id" required>
+                        <option value="" disabled selected>Select Colection</option>
+                        <optgroup for="'http://localhost:8080/CEJV__659_backend/api/collections/get_all_collections/' + sessionManager().getSessionId()">
+                            <option value="{{collection_id}}">{{collection_name}}</option>
+                        </optgroup>
+                    </select>
+
                     <br>
-                    <input type="text" class="input box-shadow" name="genre" placeholder=" Album" />
+                    <input type="text" class="input box-shadow" name="vinyl_artist_name" placeholder=" Artist/Group Name" />
                     <br>
-                    <input type="text" class="input box-shadow" name="vinyl_cover" placeholder="  Cover (URL / any image format)" />
+                    <input type="text" class="input box-shadow" name="vinyl_album_name" placeholder=" Album" />
                     <br>
-                    <input type="text" class="input box-shadow" name="album_year" placeholder="  Album Year" />
+                    <input type="text" class="input box-shadow" name="vinyl_album_cover" placeholder="  Cover (URL / any image format)" />
                     <br>
-                    <textarea class="input box-shadow" style="min-height: 100px" placeholder=" Note..."></textarea>
+                    <input type="number" min="1500" max="2500" value="2000" class="input box-shadow" name="vinyl_year" placeholder="  Album Year" />
+                    <br>
+                    <textarea  name="vinyl_note" class="input box-shadow" style="min-height: 100px" placeholder=" Note..."></textarea>
 
                     <div class="space-between">
                         <div>
                             <span class="text-light-blue" >Condition</span><br>
-                            <input style="margin: 5px 0 0 0;padding: 0" type="radio" name="condition" value="1"/>
-                            <input style="margin: 0;padding: 0" type="radio" name="condition" value="2"/>
-                            <input style="margin: 0;padding: 0" type="radio" name="condition" value="3"/>
-                            <input style="margin: 0;padding: 0" type="radio" name="condition" value="4"/>
-                            <input style="margin: 0;padding: 0" type="radio" name="condition" value="5"/>
-                            <input style="margin: 0;padding: 0" type="radio" name="condition" value="6"/>
+                            <input style="margin: 5px 0 0 0;padding: 0" type="radio" name="vinyl_condition" value="1"/>
+                            <input style="margin: 0;padding: 0" type="radio" name="vinyl_condition" value="2"/>
+                            <input style="margin: 0;padding: 0" type="radio" name="vinyl_condition" value="3"/>
+                            <input style="margin: 0;padding: 0" type="radio" name="vinyl_condition" value="4"/>
+                            <input style="margin: 0;padding: 0" type="radio" name="vinyl_condition" value="5"/>
+                            <input style="margin: 0;padding: 0" type="radio" name="vinyl_condition" value="6"/>
                         </div>
-                        <button class="button margin-v-20 box-shadow" name="add_vinyl" style="width: 150px">Add</button>
+                        <button class="button margin-v-20 box-shadow" style="width: 150px">Add</button>
                     </div>
 
                 </form>
@@ -56,6 +76,14 @@
 
 
         <!--footer -------------->
-        <div style="position: fixed; bottom: 0; right: 0"><jsp:include page="./includes/footer.jsp" /></div>
+        <jsp:include page="./includes/footer.jsp" />
+        <script>
+            var form = document.forms["add_vinyl"];
+            form.vinyl_album_cover.onblur = () => {
+                document.querySelector("#vinyl_logo").src = form.vinyl_album_cover.value;
+            }
+            form["collection_id"].value = urlParam().id;
+        </script>
+
     </body>
 </html>

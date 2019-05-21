@@ -32,7 +32,7 @@
 
 
                     <div>
-                        <i onclick="collectionManager().deleteCollection(window.location.search.split('=')[1])" class="icon a text-orange bg-light-blue border_radius" 
+                        <i onclick="collectionManager().deleteCollection(urlParam().id)" class="icon a text-orange bg-light-blue border_radius" 
                            style="position: absolute; font-size: 1.5em; padding: 5px;margin: 5px;z-index: 2" title="Delete collection"></i>
                         <img class="user-logo box-shadow" src="" id="collection_logo" onerror="this.src='./resources/img/logo.jpg'" style="width: 150px; height: 150px;"/>
                     </div>
@@ -73,7 +73,7 @@
                 document.querySelector("#collection_logo").src = form.collection_cover.value;
             }
 
-            ajax('http://localhost:8080/CEJV__659_backend/api/collections/get_collection/' + window.location.search.split('=')[1]).then((e) => {
+            ajax('http://localhost:8080/CEJV__659_backend/api/collections/get_collection/' + urlParam().id).then((e) => {
                 console.log(e);
                 console.log(e.slice(0, 36));
                 e = JSON.parse(e.replace(/(?:\r\n|\r|\n)/g, ' '));
