@@ -36,9 +36,9 @@
 
                 <br/>
 
-                <form id="add_vinyl" method="POST" onsubmit="this.action = 'http://localhost:8080/CEJV__659_backend/api/vinyls/add_vinyl/' + urlParam().id">     
+                <form id="add_vinyl" method="POST" onsubmit="this.action = 'http://nkatanasov.ca:85/CEJV__659_backend/api/vinyls/add_vinyl/' + urlParam().id">     
 
-                    <!--                    <form id="add_vinyl" onsubmit="event.preventDefault(), formManager(this).setData('http://localhost:8080/CEJV__659_backend/api/vinyls/add_vinyl/').then(() => {
+                    <!--                    <form id="add_vinyl" onsubmit="event.preventDefault(), formManager(this).setData('http://nkatanasov.ca:85/CEJV__659_backend/api/vinyls/add_vinyl/').then(() => {
                                                 window.history.back();
                                             })">   -->
 

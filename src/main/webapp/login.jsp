@@ -22,7 +22,7 @@
                 <h1 class="text-blue capitalize" style="line-height: 0">login</h1>
                 <span class="text-blue capitalize">enter your login credentials</span>
                 <br/> <br/>
-                <form id="login" onsubmit="event.preventDefault(), formManager(this).setData('http://localhost:8080/CEJV__659_backend/api/user/login').then((e) => {
+                <form id="login" onsubmit="event.preventDefault(), formManager(this).setData('http://nkatanasov.ca:85/CEJV__659_backend/api/user/login').then((e) => {
                             sessionManager().login(e);
                         })">
                     <input type="text" class="input box-shadow" name="user_email" placeholder=" Email" />

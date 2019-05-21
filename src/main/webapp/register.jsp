@@ -34,7 +34,7 @@
                 <br>
 
 
-                <form id="register" onsubmit="event.preventDefault(), formManager(this).setData('http://localhost:8080/CEJV__659_backend/api/user/register').then((e) => {
+                <form id="register" onsubmit="event.preventDefault(), formManager(this).setData('http://nkatanasov.ca:85/CEJV__659_backend/api/user/register').then((e) => {
                                 sessionManager().register(e);
                             })">
 

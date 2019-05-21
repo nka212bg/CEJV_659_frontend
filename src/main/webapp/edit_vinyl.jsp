@@ -33,7 +33,7 @@
 
                 <br/>
 
-                <form id="edit_vinyl" onsubmit="event.preventDefault(), formManager(this).setData('http://localhost:8080/CEJV__659_backend/api/vinyls/edit_vinyl/' + urlParam().id).then(() => {
+                <form id="edit_vinyl" onsubmit="event.preventDefault(), formManager(this).setData('http://nkatanasov.ca:85/CEJV__659_backend/api/vinyls/edit_vinyl/' + urlParam().id).then(() => {
                             getSystemMessage('good', '<b>Success!</b><br>The vinyl was edited')
                         })">      
                     <input type="text" class="input box-shadow" name="vinyl_artist_name" placeholder=" Artist/Group Name" />
@@ -74,7 +74,7 @@
                 document.querySelector("#vinyl_logo").src = form.vinyl_album_cover.value;
             }
 
-            ajax('http://localhost:8080/CEJV__659_backend/api/vinyls/get_vinyl/' + urlParam().id).then((e) => {
+            ajax('http://nkatanasov.ca:85/CEJV__659_backend/api/vinyls/get_vinyl/' + urlParam().id).then((e) => {
                 e = JSON.parse(e.replace(/(?:\r\n|\r|\n)/g, ' '));
                 console.log(e);
                 form["vinyl_artist_name"].value = e.vinyl_artist_name;

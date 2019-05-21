@@ -41,7 +41,7 @@
                 <br>
 
 
-                <form id="edit_collection" onsubmit="event.preventDefault(), formManager(this).setData('http://localhost:8080/CEJV__659_backend/api/collections/edit_collection/' + sessionManager().getSessionId() + '/' + window.location.search.split('=')[1]).then((e) => {
+                <form id="edit_collection" onsubmit="event.preventDefault(), formManager(this).setData('http://nkatanasov.ca:85/CEJV__659_backend/api/collections/edit_collection/' + sessionManager().getSessionId() + '/' + window.location.search.split('=')[1]).then((e) => {
                             collectionManager().addCollection(e);
                         })">
                     <input type="text" class="input box-shadow" name="collection_name" placeholder=" Collection Name" />
@@ -73,7 +73,7 @@
                 document.querySelector("#collection_logo").src = form.collection_cover.value;
             }
 
-            ajax('http://localhost:8080/CEJV__659_backend/api/collections/get_collection/' + urlParam().id).then((e) => {
+            ajax('http://nkatanasov.ca:85/CEJV__659_backend/api/collections/get_collection/' + urlParam().id).then((e) => {
                 console.log(e);
                 console.log(e.slice(0, 36));
                 e = JSON.parse(e.replace(/(?:\r\n|\r|\n)/g, ' '));

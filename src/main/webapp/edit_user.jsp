@@ -33,7 +33,7 @@
                 <br>
 
 
-                <form id="edit_user" onsubmit="event.preventDefault(), formManager(this).setData('http://localhost:8080/CEJV__659_backend/api/user/edit_user/' + sessionManager().getSessionId()).then((e) => {
+                <form id="edit_user" onsubmit="event.preventDefault(), formManager(this).setData('http://nkatanasov.ca:85/CEJV__659_backend/api/user/edit_user/' + sessionManager().getSessionId()).then((e) => {
                             sessionManager().setUser(e);
                         })">
                     <input type="text" class="input box-shadow" name="user_name" placeholder=" User Full Name" />
@@ -67,7 +67,7 @@
             }
 
             var form = document.forms["edit_user"];
-            ajax('http://localhost:8080/CEJV__659_backend/api/user/get_user/' + sessionManager().getSessionId()).then((e) => {
+            ajax('http://nkatanasov.ca:85/CEJV__659_backend/api/user/get_user/' + sessionManager().getSessionId()).then((e) => {
                 e = JSON.parse(e);
                 console.log(e);
                 form["user_name"].value = e.user_name;

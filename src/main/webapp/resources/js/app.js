@@ -285,7 +285,7 @@ function sessionManager() {
         },
         deleteUser: () => {
             confirmWindow("Are you sure you want to delete your profile?", () => {
-                ajax('http://localhost:8080/CEJV__659_backend/api/user/delete/' + sessionManager().getSessionId()).then(() => {
+                ajax('http://nkatanasov.ca:85/CEJV__659_backend/api/user/delete/' + sessionManager().getSessionId()).then(() => {
                     localStorage.clear();
                     window.location.href = "./register.jsp";
                 })
@@ -310,7 +310,7 @@ function collectionManager() {
         },
         deleteCollection: (collection_id) => {
             confirmWindow("Are you sure you want to delete this collection?", () => {
-                ajax('http://localhost:8080/CEJV__659_backend/api/collections/delete/' + sessionManager().getSessionId() + "/" + collection_id).then(() => {
+                ajax('http://nkatanasov.ca:85/CEJV__659_backend/api/collections/delete/' + sessionManager().getSessionId() + "/" + collection_id).then(() => {
                     window.location.href = "./collections.jsp";
                 })
             }
@@ -332,7 +332,7 @@ function vinylManager() {
         },
         deleteVinyl: (vinyl_id) => {
             confirmWindow("Are you sure you want to delete this vinyl?", () => {
-                ajax('http://localhost:8080/CEJV__659_backend/api/vinyls/delete/' + vinyl_id).then(() => {
+                ajax('http://nkatanasov.ca:85/CEJV__659_backend/api/vinyls/delete/' + vinyl_id).then(() => {
                     window.history.back();
                 })
             }

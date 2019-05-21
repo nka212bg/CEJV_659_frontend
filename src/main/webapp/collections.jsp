@@ -43,14 +43,14 @@
         </div>-->
 
 
-        <div id="collections" style="width: 100%; padding-top: 40px" for="'http://localhost:8080/CEJV__659_backend/api/collections/get_all_collections/' + sessionManager().getSessionId()">
+        <div id="collections" style="width: 100%; padding-top: 40px" for="'http://nkatanasov.ca:85/CEJV__659_backend/api/collections/get_all_collections/' + sessionManager().getSessionId()">
 
 
             <div class="center-div box-shadow space-between collection" style="margin-bottom: 30px !important">
                 <img class="cover_item" src="{{ collection_cover }}"/> 
-                <div class="padding-30 content_item">
+               <div class="padding-30 content_item">
                     <div class="space-between">
-                        <h2 class="first_upper">{{ collection_name }}</h2>
+                         <a href="./vinyls.jsp?id={{ collection_id }}"><h2 class="first_upper">{{ collection_name }}</h2></a>
                         <div style="margin-top: -51px; margin-right: -15px;  padding: 12px 0px 4px 0px; ">
                             <a href="./edit_collection.jsp?id={{ collection_id }}"><i class="icon a padding-10" style="background: lightgray;border-radius: 5px;" title="edit"></i></a>
                             <a href="./vinyls.jsp?id={{ collection_id }}"><i class="icon a padding-10" style="background: lightgray;border-radius: 5px;" title="go to"></i></a>

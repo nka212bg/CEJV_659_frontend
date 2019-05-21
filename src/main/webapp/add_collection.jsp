@@ -37,7 +37,7 @@
                 <br>
 
 
-                <form id="add_collection" onsubmit="event.preventDefault(), formManager(this).setData('http://localhost:8080/CEJV__659_backend/api/collections/add_collection/' + sessionManager().getSessionId()).then((e) => {
+                <form id="add_collection" onsubmit="event.preventDefault(), formManager(this).setData('http://nkatanasov.ca:85/CEJV__659_backend/api/collections/add_collection/' + sessionManager().getSessionId()).then((e) => {
                             collectionManager().addCollection(e);
                         })">
                     <input type="text" class="input box-shadow" name="collection_name" placeholder=" Collection Name" />

@@ -29,7 +29,7 @@
 
         <div class="padding-30 display-flex" style="border-radius: 5px">
 
-            <div for="'http://localhost:8080/CEJV__659_backend/api/collections/get_collection/' +  urlParam().id" style="width: 300px; min-width: 300px; height: auto; background: white; position: relative" class="border_radius box-shadow">
+            <div for="'http://nkatanasov.ca:85/CEJV__659_backend/api/collections/get_collection/' +  urlParam().id" style="width: 300px; min-width: 300px; height: auto; background: white; position: relative" class="border_radius box-shadow">
                 <img class="cover_collection" src="{{collection_cover}}" />
 
                 <div style="position: absolute; padding: 12px 0px 4px 0px; border-radius: 5px; margin: 10px; z-index: 1; display: inline-block">
@@ -45,7 +45,7 @@
                 </div>
             </div>  
 
-            <div for="'http://localhost:8080/CEJV__659_backend/api/vinyls/get_all_vinyls/' +  urlParam().id"  style="flex-flow: column wrap; margin-left: 30px;">
+            <div for="'http://nkatanasov.ca:85/CEJV__659_backend/api/vinyls/get_all_vinyls/' +  urlParam().id"  style="flex-flow: column wrap; margin-left: 30px;">
                 <div class="box-shadow space-between collection" >
                     <img class="cover_item" src="{{vinyl_album_cover}}" />
                     <div class="padding-30 content_item">
