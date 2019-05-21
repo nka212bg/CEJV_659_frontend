@@ -15,7 +15,7 @@
         <jsp:include page="./includes/header_menu.jsp" />
         <!--collections_sub_header_menu -------------->
         <jsp:include page='./includes/vinyl_sub_header_menu.jsp'>
-            <jsp:param name="bread_crumbs" value="collections &nbsp;&nbsp;<span style='color : orangered'>»</span>&nbsp;&nbsp; collection name  &nbsp;&nbsp;<span style='color : orangered'>»</span>&nbsp;&nbsp; vinyls"/>
+            <jsp:param name="bread_crumbs" value="collections &nbsp;&nbsp;<span style='color : orangered'>»</span>&nbsp;&nbsp; vinyls"/>
         </jsp:include>
 
 
@@ -30,13 +30,14 @@
         <div class="padding-30 display-flex" style="border-radius: 5px">
 
             <div for="'http://localhost:8080/CEJV__659_backend/api/collections/get_collection/' +  urlParam().id" style="width: 300px; min-width: 300px; height: auto; background: white; position: relative" class="border_radius box-shadow">
-                <img class="cover_collection" src="{{collection_cover}}"/>
+                <img class="cover_collection" src="{{collection_cover}}" />
 
                 <div style="position: absolute; padding: 12px 0px 4px 0px; border-radius: 5px; margin: 10px; z-index: 1; display: inline-block">
                     <a href = "./edit_collection.jsp?id={{collection_id}}" ><i class="icon a padding-10 bg-light-blue border_radius" title="edit collection"></i></a>
-                    <a href = "./add_vinyl.jsp?id={{collection_id}}" ><i class="icon a padding-10 bg-light-blue border_radius" title="add vinyl"></i></a>
+
                 </div>
                 <div class="padding-30" style="margin-top: 300px;">
+                    <a href = "./add_vinyl.jsp?id={{collection_id}}&name={{collection_name}}" class="button center-div" style="width: 100%">Add Vinyl</a><br>
                     <h2 class="first_upper">{{collection_name}}</h2>
                     <p class="first_upper">{{collection_genre}}</p>
                     <p style="text-align: justify">{{collection_note}}</p>
@@ -46,7 +47,7 @@
 
             <div for="'http://localhost:8080/CEJV__659_backend/api/vinyls/get_all_vinyls/' +  urlParam().id"  style="flex-flow: column wrap; margin-left: 30px;">
                 <div class="box-shadow space-between collection" >
-                    <img class="cover_item" src="{{vinyl_album_cover}}"/>
+                    <img class="cover_item" src="{{vinyl_album_cover}}" />
                     <div class="padding-30 content_item">
                         <div class="space-between">
                             <h2 class="uppercase">{{vinyl_artist_name}}</h2>

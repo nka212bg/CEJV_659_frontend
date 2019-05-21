@@ -15,7 +15,7 @@
         <jsp:include page="./includes/header_menu.jsp" />
         <!--collections_sub_header_menu -------------->
         <jsp:include page='./includes/vinyl_sub_header_menu.jsp'>
-            <jsp:param name="bread_crumbs" value="collections &nbsp;&nbsp;<span style='color : orangered'>»</span>&nbsp;&nbsp; collection name  &nbsp;&nbsp;<span style='color : orangered'>»</span>&nbsp;&nbsp; add new vinyl"/>
+            <jsp:param name="bread_crumbs" value="collections &nbsp;&nbsp;<span style='color : orangered'>»</span>&nbsp;&nbsp; vinyls &nbsp;&nbsp;<span style='color : orangered'>»</span>&nbsp;&nbsp; add new vinyl"/>
         </jsp:include>
 
 
@@ -24,7 +24,10 @@
         <div class="padding-30">
             <div class="padding-30" style="width: 350px;">
                 <div class="space-between">
-                    <h1 class="text-blue capitalize" style="line-height: 30px;">add vinyl</h1>
+                    <div>
+                        <h1 class="text-blue capitalize" style="line-height: 30px;">add vinyl</h1>
+                        <span class="subtitle_text capitalize" text="'collection: ' + urlParam().name"></span>
+                    </div>
                     <div>
 
                         <img class="user-logo box-shadow" src="" id="vinyl_logo" onerror="this.src='./resources/img/logo.jpg'" style="width: 150px; height: 150px;"/>
@@ -33,16 +36,12 @@
 
                 <br/>
 
-                <form id="add_vinyl" onsubmit="event.preventDefault(), formManager(this).setData('http://localhost:8080/CEJV__659_backend/api/vinyls/add_vinyl/').then(() => {
-                            window.history.back();
-                        })">      
+                <form id="add_vinyl" method="POST" onsubmit="this.action = 'http://localhost:8080/CEJV__659_backend/api/vinyls/add_vinyl/' + urlParam().id">     
 
-                    <select class="input box-shadow" name="collection_id" required>
-                        <option value="" disabled selected>Select Colection</option>
-                        <optgroup for="'http://localhost:8080/CEJV__659_backend/api/collections/get_all_collections/' + sessionManager().getSessionId()">
-                            <option value="{{collection_id}}">{{collection_name}}</option>
-                        </optgroup>
-                    </select>
+                    <!--                    <form id="add_vinyl" onsubmit="event.preventDefault(), formManager(this).setData('http://localhost:8080/CEJV__659_backend/api/vinyls/add_vinyl/').then(() => {
+                                                window.history.back();
+                                            })">   -->
+
 
                     <br>
                     <input type="text" class="input box-shadow" name="vinyl_artist_name" placeholder=" Artist/Group Name" />
@@ -82,7 +81,6 @@
             form.vinyl_album_cover.onblur = () => {
                 document.querySelector("#vinyl_logo").src = form.vinyl_album_cover.value;
             }
-            form["collection_id"].value = urlParam().id;
         </script>
 
     </body>

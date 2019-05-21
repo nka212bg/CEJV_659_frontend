@@ -13,7 +13,7 @@ function lifecycleMount(callback = null, phase = null) {
             }
             if (event.target.readyState === 'complete' && phase == 3) {
                 console.log('DOM phase 3 completed with delay 300ms...');
-                setTimeout(callback, 500);
+                setTimeout(callback, 1000);
             }
         });
     } else if (callback != null) {
@@ -30,7 +30,6 @@ function lifecycleMount(callback = null, phase = null) {
 sessionManager().checkForUser();
 lifecycleMount(iterator, 1);
 lifecycleMount(lazyLoaderRemove);
-
 
 
 
@@ -84,16 +83,27 @@ function lazyLoaderRemove() {
 
 //*Iterating objects in the HTML (for loop) ------------*/
 function iterator() {
+    var for_elements = [];
+    var text_elements = [];
 
-    var all_elements = [];
     document.querySelectorAll("*").forEach(attr => {
         if ("for" in attr.attributes) {
-            all_elements.push(attr);
+            for_elements.push(attr);
 //          attr.style.display = "none"; 
+        }
+        if ("text" in attr.attributes) {
+            text_elements.push(attr);
         }
     });
 
-    all_elements.forEach(element => {
+    text_elements.forEach(element => {
+        var text = element.attributes.text.value;
+        element.removeAttribute("text");
+        console.log(urlParam().name);
+        element.innerHTML = eval(text);
+    });
+
+    for_elements.forEach(element => {
         var url = element.attributes.for.value;
         element.removeAttribute("for");
         var htmlElementContent = element.innerHTML.replace(/\s\s+/g, ' ').trim();
@@ -101,22 +111,20 @@ function iterator() {
 
         ajax(eval(url).toString()).then((res) => {
             res = JSON.parse(res.replace(/(?:\r\n|\r|\n)/g, ' '));
-            console.log(res);
-
             if (Array.isArray(res)) {
-                for (var w = 0; w <= res.length; w++) {
-                    if (res[w] != undefined) {
-                        element.insertAdjacentHTML('beforeend', elementConstruct(res[w], htmlElementContent));
-                    }
+                for (var w = 0; w <= res.length - 1; w++) {
+                    element.insertAdjacentHTML('beforeend', elementConstruct(res[w], htmlElementContent));
                 }
+                return;
             }
             if (typeof res === 'object') {
                 element.insertAdjacentHTML('beforeend', elementConstruct(res, htmlElementContent));
             }
 //          element.style.display = "block";
         });
-
     });
+
+
 
     function elementConstruct(objectItem, element) {
         var temp = element;
@@ -146,7 +154,7 @@ function urlParam() {
     var key = window.location.search.trim().substr(1).split("&");
     key.forEach((e) => {
         e = e.split("=");
-        keyObj[e[0]] = e[1];
+        keyObj[e[0]] = decodeURI(e[1]);
     });
     return keyObj;
 }

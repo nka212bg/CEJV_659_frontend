@@ -27,7 +27,7 @@
         </div>
 
 
-        <div class="text-white padding-10">
+<!--        <div class="text-white padding-10">
             <br>
             <span class="text-white">Temporary navigation</span> &nbsp;&nbsp;»&nbsp;&nbsp;
             <a href="./login.jsp" class="a capitalize">login</a>&nbsp;&nbsp;
@@ -40,7 +40,7 @@
             <a href="./edit_vinyl.jsp" class="a capitalize">edit vinyl</a>&nbsp;&nbsp;
             <a href="./vinyls.jsp" class="a capitalize">vinyls</a>&nbsp;&nbsp;
 
-        </div>
+        </div>-->
 
 
         <div id="collections" style="width: 100%; padding-top: 40px" for="'http://localhost:8080/CEJV__659_backend/api/collections/get_all_collections/' + sessionManager().getSessionId()">

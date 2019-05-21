@@ -15,7 +15,7 @@
         <jsp:include page="./includes/header_menu.jsp" />
         <!--collections_sub_header_menu -------------->
         <jsp:include page='./includes/vinyl_sub_header_menu.jsp'>
-            <jsp:param name="bread_crumbs" value="collections &nbsp;&nbsp;<span style='color : orangered'>»</span>&nbsp;&nbsp; collection name  &nbsp;&nbsp;<span style='color : orangered'>»</span>&nbsp;&nbsp; edit vinyl"/>
+            <jsp:param name="bread_crumbs" value="collections &nbsp;&nbsp;<span style='color : orangered'>»</span>&nbsp;&nbsp; vinyls  &nbsp;&nbsp;<span style='color : orangered'>»</span>&nbsp;&nbsp; edit vinyl"/>
         </jsp:include>
 
 
